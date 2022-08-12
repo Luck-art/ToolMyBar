@@ -1,5 +1,6 @@
 package com.openclassrooms.toolmybar;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -7,12 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
 import com.openclassrooms.toolmybar.*;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ImageView imageViewOC;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -21,6 +26,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //1 - Configuring Toolbar
         this.configureToolbar();
+        //2 - Serialise & confige imageView
+        this.configureImageView();
+    }
+
+    private void configureImageView(){
+        // Serialise ImageView
+        this.imageViewOC = (ImageView) this.findViewById(R.id.imageView);
+        // Set OnClick Listener on it
+        imageViewOC.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                //Launch Detail Activity
+                launchDetailActivity();
+            }
+        });
+    }
+
+    private void launchDetailActivity(){
+        Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        this.startActivity(myIntent);
     }
 
     @Override
@@ -35,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void configureToolbar(){
         // Get the toolbar view inside the activity layout
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // Sets the Toolbar
         setSupportActionBar(toolbar);
     }
