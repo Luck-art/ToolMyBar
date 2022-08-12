@@ -4,12 +4,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.openclassrooms.toolmybar.R;
+
+import com.openclassrooms.toolmybar.*;
 
 public class MainActivity extends AppCompatActivity {
 
